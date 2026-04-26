@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Sales Manager | Sistema de Ventas para Instagram Shops</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #667eea;
+      --secondary: #764ba2;
+      --success: #4CAF50;
+      --warning: #FF9800;
+      --danger: #F44336;
+      --dark: #1a1a1a;
+      --light: #f5f5f5;
+      --text: #333;
+    }
+
+    html, body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 8vw, 56px);
+      font-weight: 700;
+      margin-bottom: 15px;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      opacity: 0.95;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: white;
+      color: var(--primary);
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 80px 20px;
+    }
+
+    section h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    /* PROBLEMAS SECTION */
+    .problems {
+      background: white;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .problem-card {
+      padding: 30px;
+      background: var(--light);
+      border-radius: 12px;
+      border-left: 4px solid var(--danger);
+      transition: transform 0.3s ease;
+    }
+
+    .problem-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .problem-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: var(--danger);
+    }
+
+    .problem-card p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* BENEFICIOS SECTION */
+    .benefits {
+      background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .benefit-card {
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .benefit-icon {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    .benefit-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .benefit-card p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* PRICING SECTION */
+    .pricing {
+      background: white;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .pricing-card {
+      padding: 40px;
+      border: 2px solid var(--light);
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .pricing-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .pricing-card.featured {
+      border-color: var(--primary);
+      background: linear-gradient(135deg, #667eea08 0%, #764ba208 100%);
+      transform: scale(1.05);
+    }
+
+    .pricing-card h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .pricing-card .price {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 20px 0;
+    }
+
+    .pricing-card .price span {
+      font-size: 18px;
+      color: #999;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin: 30px 0;
+      text-align: left;
+    }
+
+    .pricing-features li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--light);
+      color: #666;
+      font-size: 14px;
+    }
+
+    .pricing-features li::before {
+      content: '✓ ';
+      color: var(--success);
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    /* TESTIMONIOS */
+    .testimonials {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .testimonials h2 {
+      color: white;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .testimonial-card {
+      padding: 30px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    .testimonial-card .stars {
+      color: #FFD700;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .testimonial-card p {
+      margin-bottom: 15px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .testimonial-author {
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* CTA FINAL */
+    .cta-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .cta-section h2 {
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .cta-section p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      opacity: 0.95;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .pricing-card.featured {
+        transform: scale(1);
+      }
+
+      section {
+        padding: 50px 20px;
+      }
+
+      section h2 {
+        font-size: 28px;
+      }
+
+      .hero {
+        padding: 50px 20px;
+      }
+    }
+
+    /* SCROLL ANIMATION */
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate {
+      animation: slideUp 0.6s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>📱 Duplica tus ventas en Instagram</h1>
+      <p class="hero-subtitle">Sistema automático de seguimiento de clientes. Nunca pierdas un lead, convierte más, gana más.</p>
+      <button class="cta-button" onclick="scrollToForm()">Probar Gratis - 7 Días</button>
+    </div>
+  </section>
+
+  <!-- PROBLEMAS -->
+  <section class="problems container">
+    <h2>¿Cuál es tu mayor problema?</h2>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <h3>😵 Pierdes clientes</h3>
+        <p>Recibes mensajes, se mezclan, y nunca le respondes. El cliente se va con la competencia.</p>
+      </div>
+      <div class="problem-card">
+        <h3>📉 No sabes quién compra</h3>
+        <p>Vendes en Instagram pero no tienes registro. No sabes quién es tu cliente más frecuente.</p>
+      </div>
+      <div class="problem-card">
+        <h3>⏰ Seguimiento manual</h3>
+        <p>Escribes uno por uno recordándoles "compra de nuevo". Pierde horas que podrías usar vendiendo.</p>
+      </div>
+      <div class="problem-card">
+        <h3>💸 No cierras ventas</h3>
+        <p>Cliente interesado, pero se va cuando ve tu mensajería desorganizada.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUCIÓN -->
+  <section class="benefits">
+    <div class="container">
+      <h2>La solución: WhatsApp Sales Manager</h2>
+      <div class="benefit-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">📊</div>
+          <h3>Dashboard Automático</h3>
+          <p>Ve todas tus ventas, clientes y métricas en un solo lugar. En tiempo real.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🤖</div>
+          <h3>Seguimiento Automático</h3>
+          <p>Envía recordatorios automáticos. El cliente vuelve a comprar sin que hagas nada.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">👥</div>
+          <h3>Gestión de Clientes</h3>
+          <p>Identifica tu cliente VIP. Sabe cuántas compras hizo, cuánto gastó, cuándo compró.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📈</div>
+          <h3>Aumenta Conversión</h3>
+          <p>Clientes ordenados, seguimiento automático. +15-20% en repeat sales.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">💰</div>
+          <h3>Sin costo extra</h3>
+          <p>Todo en Google Sheets. Sin pagar por Shopify, HubSpot, o herramientas caras.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">⚡</div>
+          <h3>Implementación rápida</h3>
+          <p>Se configura en 1 hora. Empezás a usar hoy. Sin programación.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing">
+    <div class="container">
+      <h2>Elige tu plan</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Sales Tracker</h3>
+          <p style="color: #999; margin-bottom: 0;">Para empezar</p>
+          <div class="price">$100<span>/mes</span></div>
+          <ul class="pricing-features">
+            <li>Dashboard de ventas</li>
+            <li>Registro de clientes</li>
+            <li>Reportes diarios</li>
+            <li>Alertas por Telegram</li>
+            <li>Hasta 100 ventas/mes</li>
+            <li>Soporte por email</li>
+          </ul>
+          <button class="cta-button" style="background: var(--light); color: var(--primary);">Comenzar</button>
+        </div>
+
+        <div class="pricing-card featured">
+          <div style="background: var(--primary); color: white; padding: 8px 15px; border-radius: 50px; display: inline-block; font-size: 12px; margin-bottom: 15px; font-weight: bold;">⭐ MÁS POPULAR</div>
+          <h3>WhatsApp Sales Manager</h3>
+          <p style="color: #999; margin-bottom: 0;">Recomendado</p>
+          <div class="price">$150<span>/mes</span></div>
+          <ul class="pricing-features">
+            <li>Todo de Sales Tracker +</li>
+            <li>Seguimiento automático</li>
+            <li>Carrito abandonado</li>
+            <li>Identificar clientes VIP</li>
+            <li>Hasta 500 ventas/mes</li>
+            <li>Reportes semanales</li>
+            <li>Soporte prioritario</li>
+          </ul>
+          <button class="cta-button">Probar 7 Días Gratis</button>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Full Growth Stack</h3>
+          <p style="color: #999; margin-bottom: 0;">Para escalar</p>
+          <div class="price">$200<span>/mes</span></div>
+          <ul class="pricing-features">
+            <li>Todo de Manager +</li>
+            <li>Secuencias de marketing</li>
+            <li>Control de inventario</li>
+            <li>Análisis de abandono</li>
+            <li>Ventas ilimitadas</li>
+            <li>Reportes avanzados</li>
+            <li>Onboarding personalizado</li>
+          </ul>
+          <button class="cta-button" style="background: var(--light); color: var(--primary);">Comenzar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="testimonials">
+    <div class="container">
+      <h2>Lo que dicen nuestros clientes</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>"Pasé de perder clientes a tenerlos organizados. En un mes mis ventas subieron 40%. Super recomendado."</p>
+          <div class="testimonial-author">
+            <div class="avatar">SM</div>
+            <div>
+              <strong>Sofía M.</strong><br>
+              <small>Instagram Shop - Ropa</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>"No soy programadora pero lo armé en 30 minutos. Ahora tengo un CRM profesional sin pagar $500/mes."</p>
+          <div class="testimonial-author">
+            <div class="avatar">PC</div>
+            <div>
+              <strong>Paula C.</strong><br>
+              <small>E-commerce - Accesorios</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>"El seguimiento automático es increíble. Clientes que no volvían ahora compran cada semana."</p>
+          <div class="testimonial-author">
+            <div class="avatar">JL</div>
+            <div>
+              <strong>Juan L.</strong><br>
+              <small>Dropshipping</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULARIO LEAD -->
+  <section class="cta-section" id="formSection">
+    <div class="container">
+      <h2>Comienza tu prueba gratuita de 7 días</h2>
+      <p>Sin tarjeta de crédito. Acceso completo. Soporte 24/7.</p>
+      
+      <form id="leadForm" style="max-width: 400px; margin: 0 auto; text-align: left;">
+        <div style="margin-bottom: 15px;">
+          <input type="text" placeholder="Tu nombre completo" required style="width: 100%; padding: 12px; border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; background: rgba(255,255,255,0.1); color: white;">
+        </div>
+        <div style="margin-bottom: 15px;">
+          <input type="email" placeholder="Tu email" required style="width: 100%; padding: 12px; border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; background: rgba(255,255,255,0.1); color: white;">
+        </div>
+        <div style="margin-bottom: 15px;">
+          <input type="tel" placeholder="Tu WhatsApp" required style="width: 100%; padding: 12px; border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; background: rgba(255,255,255,0.1); color: white;">
+        </div>
+        <div style="margin-bottom: 20px;">
+          <select required style="width: 100%; padding: 12px; border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; background: rgba(255,255,255,0.1); color: white;">
+            <option value="" selected disabled style="color: #999;">¿Cuántas ventas haces al mes?</option>
+            <option value="1-10" style="color: #333;">1-10 ventas</option>
+            <option value="10-50" style="color: #333;">10-50 ventas</option>
+            <option value="50-200" style="color: #333;">50-200 ventas</option>
+            <option value="200+" style="color: #333;">Más de 200 ventas</option>
+          </select>
+        </div>
+        <button type="submit" class="cta-button" style="width: 100%;">Acceso Inmediato →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2024 WhatsApp Sales Manager. Todos los derechos reservados. | <a href="#" style="color: #667eea; text-decoration: none;">Términos</a> • <a href="#" style="color: #667eea; text-decoration: none;">Privacidad</a></p>
+  </footer>
+
+  <script>
+    function scrollToForm() {
+      document.getElementById('formSection').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('leadForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      
+      const data = {
+        nombre: formData.get('nombre') || this.querySelectorAll('input')[0].value,
+        email: formData.get('email') || this.querySelectorAll('input')[1].value,
+        whatsapp: formData.get('whatsapp') || this.querySelectorAll('input')[2].value,
+        ventas_mes: this.querySelector('select').value
+      };
+      
+      console.log('Lead capturado:', data);
+      alert('¡Gracias! Te enviaremos el acceso al email en 5 minutos. Revisa spam también.');
+      this.reset();
+    });
+
+    // Animaciones al scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.problem-card, .benefit-card, .pricing-card').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
