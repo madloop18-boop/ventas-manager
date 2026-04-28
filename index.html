@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SalesFlow — CRM para Instagram Shops</title>
+  <title>SalesFlow — CRM para Instagram Shops por $60/mes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
@@ -134,7 +134,11 @@
     }
     .hero-sub{
       font-size:clamp(1.05rem,2vw,1.3rem);color:var(--ink-muted);
-      max-width:600px;margin:0 auto 2.5rem;line-height:1.7;
+      max-width:650px;margin:0 auto 1rem;line-height:1.7;
+    }
+    .hero-price{
+      font-size:clamp(1.3rem,2.5vw,1.6rem);font-weight:700;
+      color:var(--accent);margin-bottom:2.5rem;
     }
     .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
 
@@ -215,73 +219,48 @@
 
     /* ─── PRICING ─── */
     .pricing{padding:clamp(60px,10vw,120px) 0;background:var(--surface)}
-    .toggle-wrap{display:flex;justify-content:center;margin-bottom:3rem}
-    .toggle{
-      display:flex;background:var(--surface-raised);border:1.5px solid var(--border);
-      border-radius:var(--radius-full);padding:4px;
+    .pricing-container{max-width:480px;margin:0 auto}
+    .pricing-card{
+      padding:3rem;background:var(--surface);border:3px solid var(--accent);
+      border-radius:var(--radius);position:relative;box-shadow:var(--shadow-glow);
     }
-    .toggle button{
-      padding:.65rem 1.8rem;border:none;border-radius:var(--radius-full);
-      font-weight:600;font-size:.88rem;cursor:pointer;transition:all .25s;
-      background:transparent;color:var(--ink-muted);
-    }
-    .toggle button.active{background:var(--ink);color:#fff;box-shadow:var(--shadow-sm)}
-    .save-badge{
-      display:inline-block;padding:.15rem .6rem;border-radius:var(--radius-full);
-      background:rgba(0,210,211,.15);color:#00b894;font-size:.7rem;font-weight:700;
-      margin-left:.4rem;vertical-align:middle;
-    }
-
-    .pricing-grid{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:1.5rem;max-width:1050px;margin:0 auto;align-items:start;
-    }
-    .plan{
-      padding:2.5rem;background:var(--surface);border:2px solid var(--border);
-      border-radius:var(--radius);transition:all .4s ease;position:relative;
-    }
-    .plan:hover{border-color:var(--accent-light);box-shadow:var(--shadow-md);transform:translateY(-6px)}
-    .plan.featured{
-      border-color:var(--accent);box-shadow:var(--shadow-glow);
-      transform:scale(1.03);z-index:2;
-    }
-    .plan.featured:hover{transform:scale(1.03) translateY(-6px)}
-    .plan-badge{
-      position:absolute;top:-13px;left:50%;transform:translateX(-50%);
-      padding:.4rem 1.4rem;border-radius:var(--radius-full);
-      background:var(--gradient-hero);color:#fff;font-size:.72rem;
+    .pricing-badge{
+      position:absolute;top:-16px;left:50%;transform:translateX(-50%);
+      padding:.5rem 1.8rem;border-radius:var(--radius-full);
+      background:var(--gradient-hero);color:#fff;font-size:.75rem;
       font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;
     }
-    .plan-name{font-size:1.1rem;font-weight:700;margin-bottom:.3rem}
-    .plan-desc{font-size:.88rem;color:var(--ink-muted);margin-bottom:1.5rem}
-    .plan-price{font-size:2.8rem;font-weight:800;letter-spacing:-.03em;margin-bottom:.3rem}
-    .plan-price span{font-size:1rem;font-weight:500;color:var(--ink-muted)}
-    .plan-period{font-size:.82rem;color:var(--ink-muted);margin-bottom:1.5rem;display:block}
-    .plan-features{
-      list-style:none;border-top:1px solid var(--border);padding-top:1.5rem;margin-bottom:2rem;
+    .pricing-header{text-align:center;margin-bottom:2rem}
+    .pricing-header h3{font-size:1.4rem;font-weight:700;margin-bottom:.5rem;color:var(--ink)}
+    .pricing-header p{color:var(--ink-muted);font-size:1rem;margin-bottom:1.5rem}
+    .price{
+      font-size:4rem;font-weight:800;color:var(--ink);text-align:center;
+      margin-bottom:.5rem;line-height:1;
     }
-    .plan-features li{
-      padding:.55rem 0;display:flex;align-items:start;gap:.6rem;font-size:.92rem;color:var(--ink-soft);
+    .price span{font-size:1.4rem;color:var(--ink-muted);font-weight:500}
+    .pricing-period{text-align:center;font-size:.9rem;color:var(--ink-muted);margin-bottom:2rem;display:block}
+    .pricing-features{
+      list-style:none;border-top:1px solid var(--border);padding-top:2rem;margin-bottom:2rem;
     }
-    .plan-features li::before{content:'✓';color:var(--accent);font-weight:700;font-size:1rem}
-    .plan-btn{
-      width:100%;padding:.95rem;border-radius:var(--radius-sm);font-weight:600;
-      font-size:.95rem;cursor:pointer;transition:all .25s;border:none;
+    .pricing-features li{
+      padding:.75rem 0;display:flex;align-items:start;gap:.75rem;font-size:.98rem;color:var(--ink-soft);
     }
-    .plan-btn-outline{background:transparent;border:2px solid var(--border);color:var(--ink)}
-    .plan-btn-outline:hover{border-color:var(--accent);color:var(--accent)}
-    .plan-btn-fill{
-      background:var(--accent);color:#fff;box-shadow:0 4px 16px rgba(108,92,231,.25);
+    .pricing-features li::before{content:'✓';color:var(--accent);font-weight:700;font-size:1.1rem}
+    .pricing-cta{
+      width:100%;padding:1.1rem;border-radius:var(--radius-sm);font-weight:700;
+      font-size:1.05rem;cursor:pointer;transition:all .25s;border:none;
+      background:linear-gradient(135deg,var(--accent),#8b5cf6);color:#fff;
+      box-shadow:0 8px 24px rgba(108,92,231,.35);
     }
-    .plan-btn-fill:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:var(--shadow-glow)}
+    .pricing-cta:hover{transform:translateY(-2px);box-shadow:var(--shadow-glow)}
 
     /* ─── TESTIMONIALS ─── */
-    .testimonials{padding:clamp(60px,10vw,120px) 0;background:var(--surface-raised)}
+    .testimonials{padding:clamp(60px,10vw,120px) 0;background:linear-gradient(180deg,var(--bg-subtle) 0%,var(--bg) 100%)}
     .test-grid{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:1.5rem;
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;
     }
     .test-card{
-      padding:2rem;background:var(--surface);border:1px solid var(--border);
+      padding:2.5rem;background:var(--surface);border:1px solid var(--border);
       border-radius:var(--radius);transition:all .35s ease;
     }
     .test-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px)}
@@ -373,9 +352,6 @@
         box-shadow:var(--shadow-md);gap:1rem;
       }
       .hero-proof{gap:1.5rem}
-      .pricing-grid{gap:1rem}
-      .plan.featured{transform:none}
-      .plan.featured:hover{transform:translateY(-6px)}
       .hero h1 br{display:none}
     }
 
@@ -412,14 +388,16 @@
     <div class="hero-content">
       <div class="hero-pill reveal">
         <span class="dot"></span>
-        Nuevo: seguimiento automático con IA
+        $60/mes · Todo incluido · 7 días gratis
       </div>
       <h1 class="reveal reveal-delay-1">
         Dejá de perder<br>clientes en <em>Instagram</em>
       </h1>
       <p class="hero-sub reveal reveal-delay-2">
-        CRM automático para Instagram Shops. Seguimiento inteligente, dashboard en tiempo real y cero apps caras.
-        <strong>Todo desde Google Sheets.</strong>
+        CRM automático para Instagram Shops. Dashboard en tiempo real, seguimiento inteligente, $0 en apps caras.
+      </p>
+      <p class="hero-price reveal reveal-delay-2">
+        $60/mes · Todo incluido · Sin sorpresas
       </p>
       <div class="hero-actions reveal reveal-delay-3">
         <a href="#cta" class="btn btn-accent">Probar 7 días gratis →</a>
@@ -523,67 +501,30 @@
 <section class="pricing" id="precio">
   <div class="container">
     <div class="section-header center">
-      <div class="section-label reveal">Precios</div>
-      <h2 class="section-title reveal reveal-delay-1">Simple, transparente, <em class="serif">justo</em></h2>
-      <p class="section-sub reveal reveal-delay-2">Sin sorpresas. Sin contratos. Cancelá cuando quieras.</p>
+      <div class="section-label reveal">Precio</div>
+      <h2 class="section-title reveal reveal-delay-1">Simple, claro, <em class="serif">justo</em></h2>
+      <p class="section-sub reveal reveal-delay-2">Un solo plan. Todo incluido. Sin sorpresas. Cancelá cuando quieras.</p>
     </div>
-    <div class="toggle-wrap reveal">
-      <div class="toggle">
-        <button class="active" id="btnMensual" onclick="switchPlan('mensual')">Mensual</button>
-        <button id="btnAnual" onclick="switchPlan('anual')">Anual <span class="save-badge">-20%</span></button>
-      </div>
-    </div>
-    <div class="pricing-grid">
-      <!-- STARTER -->
-      <div class="plan reveal">
-        <div class="plan-name">Starter</div>
-        <div class="plan-desc">Para empezar a organizarte</div>
-        <div class="plan-price" data-mensual="$100" data-anual="$80">$100<span>/mes</span></div>
-        <span class="plan-period" data-mensual="Facturación mensual" data-anual="Facturación anual ($960/año)">Facturación mensual</span>
-        <ul class="plan-features">
-          <li>Dashboard de ventas</li>
-          <li>Registro de clientes</li>
-          <li>Reportes diarios</li>
-          <li>Alertas por Telegram</li>
-          <li>Hasta 100 ventas/mes</li>
-          <li>Soporte por email</li>
-        </ul>
-        <button class="plan-btn plan-btn-outline" onclick="window.location.href='#cta'">Comenzar</button>
-      </div>
-      <!-- PRO -->
-      <div class="plan featured reveal reveal-delay-1">
-        <div class="plan-badge">⭐ Más popular</div>
-        <div class="plan-name">Professional</div>
-        <div class="plan-desc">Para crecer en serio</div>
-        <div class="plan-price" data-mensual="$150" data-anual="$120">$150<span>/mes</span></div>
-        <span class="plan-period" data-mensual="Facturación mensual" data-anual="Facturación anual ($1.440/año)">Facturación mensual</span>
-        <ul class="plan-features">
-          <li>Todo de Starter +</li>
+    <div class="pricing-container reveal">
+      <div class="pricing-card">
+        <div class="pricing-badge">⭐ TODO INCLUIDO</div>
+        <div class="pricing-header">
+          <h3>SalesFlow</h3>
+          <p>Para cualquier vendedor de Instagram</p>
+        </div>
+        <div class="price">$60<span>/mes</span></div>
+        <span class="pricing-period">Facturación mensual · Cancelá cuando quieras</span>
+        <ul class="pricing-features">
+          <li>Dashboard completo</li>
+          <li>Registro de clientes automático</li>
           <li>Seguimiento automático</li>
-          <li>Carrito abandonado</li>
-          <li>Identificar clientes VIP</li>
-          <li>Hasta 500 ventas/mes</li>
-          <li>Reportes semanales</li>
-          <li>Soporte prioritario</li>
-        </ul>
-        <button class="plan-btn plan-btn-fill" onclick="window.location.href='#cta'">Probar 7 días gratis</button>
-      </div>
-      <!-- GROWTH -->
-      <div class="plan reveal reveal-delay-2">
-        <div class="plan-name">Growth</div>
-        <div class="plan-desc">Para escalar tu negocio</div>
-        <div class="plan-price" data-mensual="$200" data-anual="$160">$200<span>/mes</span></div>
-        <span class="plan-period" data-mensual="Facturación mensual" data-anual="Facturación anual ($1.920/año)">Facturación mensual</span>
-        <ul class="plan-features">
-          <li>Todo de Professional +</li>
-          <li>Secuencias de marketing</li>
-          <li>Control de inventario</li>
-          <li>Análisis de abandono</li>
+          <li>Reportes diarios + semanales</li>
+          <li>Alertas por Telegram</li>
           <li>Ventas ilimitadas</li>
-          <li>Reportes avanzados</li>
-          <li>Onboarding personalizado</li>
+          <li>Soporte por email</li>
+          <li>7 días gratis (sin tarjeta)</li>
         </ul>
-        <button class="plan-btn plan-btn-outline" onclick="window.location.href='#cta'">Comenzar</button>
+        <button class="pricing-cta" onclick="window.location.href='#cta'">Probar 7 días gratis</button>
       </div>
     </div>
   </div>
@@ -695,7 +636,7 @@
     <div class="cta-content">
       <h2 class="reveal">Empezá a vender <em>mejor</em> hoy</h2>
       <p class="reveal reveal-delay-1">7 días gratis. Sin tarjeta. Sin compromiso. Tu primer dashboard en 1 hora.</p>
-      <a href="https://wa.me/5491139004136?text=Hola!%20Quiero%20probar%20SalesFlow%20gratis" target="_blank" class="btn-white reveal reveal-delay-2">
+      <a href="https://wa.me/5491139004136?text=Hola!%20Quiero%20probar%20SalesFlow%20gratis%20por%207%20días" target="_blank" class="btn-white reveal reveal-delay-2">
         Hablar por WhatsApp →
       </a>
     </div>
@@ -705,7 +646,7 @@
 <!-- ═══ FOOTER ═══ -->
 <footer class="footer">
   <div class="container">
-    <p>© 2025 SalesFlow — Hecho con 💜 para vendedores de Instagram. <a href="#">Términos</a> · <a href="#">Privacidad</a></p>
+    <p>© 2026 SalesFlow — Hecho con 💜 para vendedores de Instagram. <a href="#">Términos</a> · <a href="#">Privacidad</a></p>
   </div>
 </footer>
 
@@ -727,29 +668,6 @@ const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 40);
 });
-
-// ── Pricing toggle
-function switchPlan(tipo) {
-  const btnM = document.getElementById('btnMensual');
-  const btnA = document.getElementById('btnAnual');
-
-  if (tipo === 'mensual') {
-    btnM.classList.add('active');
-    btnA.classList.remove('active');
-  } else {
-    btnA.classList.add('active');
-    btnM.classList.remove('active');
-  }
-
-  document.querySelectorAll('.plan-price').forEach(el => {
-    const precio = el.getAttribute('data-' + tipo);
-    el.innerHTML = precio + '<span>/mes</span>';
-  });
-
-  document.querySelectorAll('.plan-period').forEach(el => {
-    el.textContent = el.getAttribute('data-' + tipo);
-  });
-}
 
 // ── Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
